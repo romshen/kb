@@ -12,15 +12,6 @@ pytest-env = "*"
 pytest-mock = "*"
 pytest-cov = "*"
 
-# linting
-#flake8 = "*"
-
-# formatting
-#black = "==21.8b0"
-
-# sorting
-#isort = "*"
-
 # pre-commit hooks
 pre-commit = "*"
 
