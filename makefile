@@ -5,7 +5,8 @@
 default: up_db wait_for_db
 
 up_db:
-	@docker-compose up --build --remove-orphans -d database
+	@cd ./sql
+	@docker compose up --build --remove-orphans -d database
 
 wait_for_db:
 	@until docker container exec -it database pg_isready;
@@ -21,4 +22,5 @@ install_environment:
 	@pre-commit --version
 
 clean:
-	@docker-compose down --volumes --remove-orphans
+	@cd ./sql
+	@docker compose down --volumes --remove-orphans

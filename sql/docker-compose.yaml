@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  database:
+    env_file: .env
+    image: postgres:14-alpine
+    container_name: "database"
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - data-volume:/var/lib/db_data
+      - ./sample_database/:/docker-entrypoint-initdb.d/
+
+volumes:
+  data-volume:
