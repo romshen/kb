@@ -1,5 +1,5 @@
-from timeit import timeit
 from math import sqrt
+from timeit import timeit
 
 
 def cash(fun):
@@ -29,7 +29,7 @@ def fib_1(n):
         a = b
         b = result
 
-    return  result
+    return result
 
 
 # @cash
@@ -41,7 +41,7 @@ def fib_2(n):
     for _ in range(1, n):
         a, b = b, a + b
 
-    return  b
+    return b
 
 
 # @cash
@@ -70,36 +70,19 @@ def fib_4(n):
 
 def fib_5(n):
     """
-    In this method we directly implement the formula for nth term in the fibonacci series.
+    In this method we directly implement the formula for nth term in the
+    fibonacci series.
     Fn = {[(√5 + 1)/2] ^ n} / √5
-    Time Complexity: O(logn), this is because calculating phi^n takes logn time
+    Time Complexity: O(log n), this is because calculating phi^n takes log n
+    time.
     Space Complexity: O(1)
-    Reference: http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html
+    Reference:
+    http://maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html
     """
     square_root_five = sqrt(5)
     return round(pow((square_root_five + 1) / 2, n) / square_root_five)
 
 
-# test functions above
-input_output_mapping = {
-    0: 0,
-    1: 1,
-    2: 1,
-    3: 2,
-    4: 3,
-    5: 5,
-}
-
-
-def test_fib(*functions):
-    for func in functions:
-        for k, v in input_output_mapping.items():
-            assert func(k) == v
-
-
-test_fib(fib_1, fib_2, fib_3, fib_4, fib_5)
-
-
-# check time of completion
-for n in range(1, 6):
-    print(timeit(f'fib_{n}(5)', globals=globals()))
+if __name__ == "__main__":
+    for n in range(1, 6):
+        print(timeit(f"fib_{n}(5)", globals=globals()))

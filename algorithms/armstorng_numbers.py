@@ -1,7 +1,8 @@
 from timeit import timeit
 
 
-def is_armstorng_number_string_casting(n):
+def is_armstorng_number_1(n):
+    """String casting approach."""
     s = str(n)
     length = len(s)
 
@@ -10,11 +11,6 @@ def is_armstorng_number_string_casting(n):
         _sum += int(s[i]) ** length
 
     return n == _sum
-
-
-assert is_armstorng_number_string_casting(1)
-assert is_armstorng_number_string_casting(153)
-assert not is_armstorng_number_string_casting(10)
 
 
 def count_digits(n):
@@ -26,8 +22,8 @@ def count_digits(n):
     return length
 
 
-def is_armstorng_number_math_approach(n):
-    """Faster than string casting."""
+def is_armstorng_number_2(n):
+    """Math approach. Faster than string casting."""
     length = count_digits(n)
 
     _sum = 0
@@ -39,13 +35,9 @@ def is_armstorng_number_math_approach(n):
     return n == _sum
 
 
-assert is_armstorng_number_math_approach(1)
-assert is_armstorng_number_math_approach(153)
-assert not is_armstorng_number_math_approach(10)
-
-
-def is_armstorng_number_log_approach(n):
-    """This function is slowest because of import of math module.
+def is_armstorng_number_3(n):
+    """Log approach.
+    This function is slowest because of import of math module.
     If we move it at the top level this function the fastest."""
     from math import floor, log10
 
@@ -60,21 +52,11 @@ def is_armstorng_number_log_approach(n):
     return n == _sum
 
 
-assert is_armstorng_number_log_approach(1)
-assert is_armstorng_number_log_approach(153)
-assert not is_armstorng_number_log_approach(10)
-
-
-print(timeit("is_armstorng_number_string_casting(153)", globals=globals()))
-print(timeit("is_armstorng_number_math_approach(153)", globals=globals()))
-print(timeit("is_armstorng_number_log_approach(153)", globals=globals()))
-
-
 def filter_n_armstorng_numbers(n, max=1000000):
     amount = n
     number = 0
     while amount > 0:
-        if is_armstorng_number_math_approach(number):
+        if is_armstorng_number_2(number):
             print(number)
             amount -= 1
         number += 1
@@ -84,8 +66,14 @@ filter_n_armstorng_numbers(13)
 
 
 def print_armstorng_numbers_in_range(n):
-    armstrong_nunbers = tuple(filter(is_armstorng_number_math_approach, range(n + 1)))
+    armstrong_nunbers = tuple(filter(is_armstorng_number_2, range(n + 1)))
     print(*armstrong_nunbers)
 
 
 print_armstorng_numbers_in_range(153)
+
+
+if __name__ == "__main__":
+    print(timeit("is_armstorng_number_string_casting(153)", globals=globals()))
+    print(timeit("is_armstorng_number_math_approach(153)", globals=globals()))
+    print(timeit("is_armstorng_number_log_approach(153)", globals=globals()))
