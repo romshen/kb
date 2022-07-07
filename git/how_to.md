@@ -4,7 +4,7 @@
 2. add a file to the last commit if it wasn't pushed:
 ```shell
 git add file-path
-git commit --ament --no-edit
+git commit --amend --no-edit
 ```
 If it was pushed to your remote branch,
 then - after amending your commit locally (as described above):
