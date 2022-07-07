@@ -4,6 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+aiohttp = "*"
+requests = "*"
 
 [dev-packages]
 # testing
@@ -11,7 +13,6 @@ pytest = "*"
 pytest-env = "*"
 pytest-mock = "*"
 pytest-cov = "*"
-
 # pre-commit hooks
 pre-commit = "*"
 
