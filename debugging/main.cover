@@ -1,0 +1,14 @@
+    1: def multiply(x, y):
+    1:     return x * y
+       
+       
+    1: def calculate(x, y):
+    1:     y = multiply(y, 10)
+    1:     x = sum((x, 3))
+    1:     return sum((x, y))
+        
+    1: x = 20
+    1: y = 50
+       # breakpoint()
+    1: x = x + 10
+    1: out = calculate(x, y)
